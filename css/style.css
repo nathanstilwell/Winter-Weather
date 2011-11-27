@@ -216,6 +216,9 @@ td { vertical-align: top; }
 
 
 
+body {
+  background : #400 url(../images/bg.jpg) no-repeat center center;
+}
 
 
 
