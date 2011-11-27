@@ -15,6 +15,9 @@
     .                                             .
     .:*~*:._.:*~*:._.:*~*:._.:*~*:._.:*~*:._.:*~*:.
 
+
+<link href='http://fonts.googleapis.com/css?family=Montez' rel='stylesheet' type='text/css'>
+
 */
 
 
@@ -49,7 +52,9 @@
         startSnow,
         stopSnow,
         pauseMusic,
-        firstScript;
+        firstScript,
+        seasonsGreetings,
+        timeout;
 /*
 
                                   )
@@ -92,7 +97,7 @@
     ready = false;
     stopSnowing = false;
     width = target.width();
-    firstScript = $('script')[0];
+    firstScript = $('body script')[0];
 
     // functions
 
@@ -232,6 +237,7 @@ o8o        o888o `Y8bod8P' d888b    d888b        .8'
       $(window).bind('resize.ns-snow', function windowResize(e){
         height = $(this).height();
         width = $(this).width();
+        snowStorm.css('height', $(doc).height());
       });
 
       //
@@ -241,8 +247,13 @@ o8o        o888o `Y8bod8P' d888b    d888b        .8'
       startSnow();
     };
 
-    startSnow = function () {
-      target.append(snowStorm);
+    startSnow = function startSnow() {
+      if (firstScript && firstScript.nodeType === 1) {
+        $(firstScript).before(snowStorm);
+      } else {
+        target.append(snowStorm);
+      }
+
       snowStorm.fadeIn('slow');
       fall();
 
@@ -255,6 +266,8 @@ o8o        o888o `Y8bod8P' d888b    d888b        .8'
         }
         song.play();
       }
+
+      timeout = setTimeout(seasonsGreetings, 1000);
     };
 
     stopSnow = function stopSnow() {
@@ -262,6 +275,16 @@ o8o        o888o `Y8bod8P' d888b    d888b        .8'
       stopSnowing = true;
       $('#happy-holidays').remove();
       $(song).remove();
+    };
+
+    seasonsGreetings = function seasonsGreetings () {
+      var wishes = $('<div/>', {
+        id : 'seasonsGreetingsFromNathanStilwell',
+        'class' : 'seasonsGreetingsFromNathanStilwell'
+      }).html('<p>Merry Christmas</p><p>from</p><p>Gilt Groupe</p>');
+
+      snowStorm.append(wishes);
+      wishes.fadeIn(5000);
     };
 
     return {
