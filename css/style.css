@@ -205,22 +205,28 @@ td { vertical-align: top; }
 /* ==|== primary styles =====================================================
    Author:
    ========================================================================== */
+/*
+font-family: 'Montez', cursive;
+font-family: 'Dancing Script', cursive;
+font-family: 'Amatic SC', cursive;
+font-family: 'Meddon', cursive;*/
 
-
-
-
-
-
-
-
-
-
+html, body {
+  height : 100%;
+  width : 100%;
+}
 
 body {
   background : #400 url(../images/bg.jpg) no-repeat center center;
 }
 
-
+.title {
+  color : #fff;
+  text-align : center;
+  font-size : 100px;
+  margin : 10px 0;
+  text-shadow : 0 0 1px #000, -1px 1px #000, -2px 2px #000, -3px 3px #000, -4px 4px #000, -5px 5px #000;
+}
 
 
 
