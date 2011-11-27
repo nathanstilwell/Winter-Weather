@@ -87,7 +87,7 @@
 */
     // initialize
     target = $('body');
-    height = target.height();
+    height = target.height() || $(doc).height();
     music = config.music;
     ready = false;
     stopSnowing = false;
